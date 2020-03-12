@@ -94,3 +94,26 @@ A port
 
 > 
 ```
+
+## Why?
+
+* Flavor
+* Timegating travel between areas keeps the players in the game longer, increasing engagement
+* Timegating travel incentivizes players to move efficiently and choose their routes
+* This concept allows for travel between disjointed areas/rooms in a map, which allows for greater freedom in map design without having to do weird things with exits and doors
+* Having a dedicated transportation room (`boat`) allows players to still roleplay even when in transit between areas
+
+## It could be better
+
+While the concept works as-is, it could definitely be improved to match the diku-style complexity that ranviermud strives for.
+
+* Move `room.metadata.destinations` to `room.behaviors.port.destinations` because in retrospect that would make more sense
+* Modify the `sail` command to require and consume a `port_ticket` item in the player's inventory, which must be bought from a vendor; alternatively, require direct currency to sail
+	* Add a `port_ticket` item, as well as a `port_ticket_seller` or `port_ticket_machine` entity
+	* Add a configuration object to the bundle to toggle whether a cost is required, and what that cost is
+* Calculate travel time between rooms with coordinates by doing coordinate math
+	* Optionally, or minimally, add a `travel_time` metadata item to specify/override travel time to each destination individually
+* Play randomized emotes while the player is on the boat to give the area some flavor for longer trips
+* Optionally, move the graphical travel bar to a subcommand so the player can check their progress manually rather than having it forced onto the screen and potentially interrupted by other messages
+* Create individual `boat` entities with their own names, characters, and overall flavor
+	* Specify which boat to use in the metadata

@@ -1,0 +1,8 @@
+# port_sign is used by rooms using the port behavior
+- id: port_sign
+  name: "Sign: Port Destinations"
+  roomDesc: "Sign: Port Destinations"
+  description: "A sign with listings for all of the destinations from this port.\r\nUse `sail <#>` to sail to a destination"
+  keywords: [ "sign", "destinations" ]
+  metadata:
+    noPickup: true

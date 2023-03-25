@@ -10,10 +10,11 @@ const travelVarianceMax = 10;
 module.exports = {
 	/*
 	The traveling effect is a way to add time-gating to travel segments instead of moving everywhere instantaneously. 
-	
-	The travel is represented by a graphical bar. Commands are not blocked during this time, so the bar can be interrupted by either player commands or channel responses, but such is the price we pay for our experiment.
-	
-	The effect can be applied anywhere, but the intention is to move the player after the effect ends. This can be something like a teleport spell that takes time to start up, or using a vehicle/flight to move vast distances where the stuff between your start and end aren't important.
+	The travel is represented by a graphical bar. Commands are not blocked during this time, so the bar can be interrupted 
+	by either player commands or channel responses, but such is the price we pay for our experiment.
+	The effect can be applied anywhere, but the intention is to move the player after the effect ends. This can be something 
+	like a teleport spell that takes time to start up, or using a vehicle/flight to move vast distances where the stuff between 
+	your start and end aren't important.
 	*/
 	flags: [ EffectFlag.TRAVEL ],
 	config: {
@@ -52,7 +53,7 @@ module.exports = {
 		},
 		updateTick: function() {
 			// Display a graphical bar every second
-			// Travaling (18s) [....:....:....:...]
+			// Traveling (18s) [....:....:....:...]
 			if (this.elapsed < 1000) {
 				state.CommandManager.get('look').execute('', this.target);
 				Broadcast.sayAt(this.target, '\r\nThe ship begins its voyage toward ' + this.state.nextRoom.title);

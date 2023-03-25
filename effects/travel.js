@@ -1,6 +1,6 @@
 'use strict';
 
-const { Broadcast, EffectFlag, Logger } = require('ranvier');
+const { Broadcast, EffectFlag, Logger } = require('whispermud-core');
 const { random } = require('../lib/Utility.js');
 const travelChar = '.';
 const milestoneChar = ':';

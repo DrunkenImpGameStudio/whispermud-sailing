@@ -1,6 +1,6 @@
 'use strict';
 
-const { Broadcast, Logger } = require('ranvier');
+const { Broadcast, Logger } = require('whispermud-core');
 const boatID = 'ocean:boat';
 
 module.exports = {

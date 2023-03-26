@@ -3,6 +3,5 @@
 - id: boat
   title: "Passenger Ship"
   description: "A ship charting a course through the open seas"
-  coordinates: [0, 0, 10000]
   metadata:
     isBoat: true

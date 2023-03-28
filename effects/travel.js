@@ -45,8 +45,8 @@ module.exports = {
 			// Once the effect ends, move the player to their destination
 			Broadcast.sayAt(this.target, ']\r\nThe ship arrives at ' + this.state.nextRoom.title + ' and you disembark');
 			Broadcast.sayAt(this.target, '');
-			this.target.moveTo(this.state.nextRoom, () => {
-				Broadcast.atExcept(this.state.nextRoom, this.target.name + ' disembarks from a passenger ship', this.target);
+			this.target.moveTo(this.state.nextRoom, _ => {
+				Broadcast.sayAtExcept(this.state.nextRoom, this.target.name + ' disembarks from a passenger ship', this.target);
 				state.CommandManager.get('look').execute('', this.target);
 				Broadcast.prompt(this.target);
 			});

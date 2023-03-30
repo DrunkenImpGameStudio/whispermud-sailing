@@ -14,7 +14,8 @@ module.exports = {
 		if (prevRoom && prevRoom.hasBehavior(portBehavior)) {
 			// You can only travel from a room that has port behavior
 			let port = prevRoom.getBehavior(portBehavior);
-			let nextRoom = state.RoomManager.getRoom(port.destinations[args[0]].id);
+			let destination = port.destinations[args[0]]
+			let nextRoom = state.RoomManager.getRoom(destination.id);
 			let boat = state.RoomManager.getRoom(boatID);
 			if (nextRoom) {
 				// Move the player to the boat room, floating out in the ocean
@@ -24,7 +25,7 @@ module.exports = {
 				player.moveTo(boat, () => {
 					Broadcast.sayAt(player, 'You board a passenger ship to ' + nextRoom.title);
 					let effect = state.EffectFactory.create('travel', {
-						duration: 20 * 1000
+						duration: destination.time * 1000
 					}, {
 						nextRoom
 					});

@@ -2,18 +2,19 @@
 
 const { Broadcast, Logger } = require('whispermud-core');
 const boatID = 'ocean:boat';
+const portBehavior = 'port';
 
 module.exports = {
 	aliases: [ 'travel' ],
 	usage: 'sail <location>',
 	command: state => (args, player, arg0) => {
-		// sail takes a single numerical argument, which corresponds to the room.metadata.destinations array
+		// sail takes a single numerical argument, which corresponds to the room.behavior.destinations array
 		let prevRoom = player.room;
 
-		if (prevRoom && prevRoom.getMeta('isPort')) {
-			// You can only travel in a room where room.metadata.isPort = true
-			let destinations = prevRoom.getMeta('destinations');
-			let nextRoom = state.RoomManager.getRoom(destinations[args[0]].id);
+		if (prevRoom && prevRoom.hasBehavior(portBehavior)) {
+			// You can only travel from a room that has port behavior
+			let port = prevRoom.getBehavior(portBehavior);
+			let nextRoom = state.RoomManager.getRoom(port.destinations[args[0]].id);
 			let boat = state.RoomManager.getRoom(boatID);
 			if (nextRoom) {
 				// Move the player to the boat room, floating out in the ocean
